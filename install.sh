@@ -16,6 +16,7 @@ echo "解压文件中..."
 tar zxvf ./ss5-3.8.9-8.tar.gz
 
 echo ""
+rm ss5-3.8.9-8.tar.gz
 echo "安装中1..."
 cd ss5-3.8.9
 
