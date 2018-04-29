@@ -7,7 +7,9 @@ yum -y install gcc gcc-c++ automake make pam-devel openldap-devel cyrus-sasl-dev
 
 echo ""
 echo "下载Socks服务中..."
-wget https://sourceforge.net/projects/ss5/files/ss5/3.8.9-8/ss5-3.8.9-8.tar.gz
+#wget https://sourceforge.net/projects/ss5/files/ss5/3.8.9-8/ss5-3.8.9-8.tar.gz
+
+wget -q -N --no-check-certificate https://raw.githubusercontent.com/wyx176/Socks5/master/ss5-3.8.9-8.tar.gz
 
 echo ""
 echo "解压文件中..."
