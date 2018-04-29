@@ -36,6 +36,7 @@ chmod +x /etc/init.d/ss5
 chkconfig --add ss5
 chkconfig --level 345 ss5 on
 
+cd /root
 rm install.sh
 echo ""
 echo "Socks5安装成功！"
