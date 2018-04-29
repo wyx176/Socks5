@@ -31,15 +31,16 @@ make
 echo "安装中4..."
 make install
 
+echo "开机启动添加成功"
 chmod +x /etc/init.d/ss5
 chkconfig --add ss5
 chkconfig --level 345 ss5 on
 
+rm install.sh
 echo ""
-
-echo "开机启动添加成功"
-
 echo "Socks安装成功！"
+
+echo ""
 echo "请按照文档进行配置！"
 
 echo ""
