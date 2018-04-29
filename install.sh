@@ -2,11 +2,11 @@
 export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
 echo ""
-echo "安装SS5所依赖的组件,请稍等..."
+echo "安装Socks5所依赖的组件,请稍等..."
 yum -y install gcc gcc-c++ automake make pam-devel openldap-devel cyrus-sasl-devel openssl-devel
 
 echo ""
-echo "下载Socks服务中..."
+echo "下载Socks5服务中..."
 #wget https://sourceforge.net/projects/ss5/files/ss5/3.8.9-8/ss5-3.8.9-8.tar.gz
 
 wget -q -N --no-check-certificate https://raw.githubusercontent.com/wyx176/Socks5/master/ss5-3.8.9-8.tar.gz
@@ -38,7 +38,7 @@ chkconfig --level 345 ss5 on
 
 rm install.sh
 echo ""
-echo "Socks安装成功！"
+echo "Socks5安装成功！"
 
 echo ""
 echo "请按照文档进行配置！"
