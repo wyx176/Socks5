@@ -15,7 +15,9 @@ tar zxvf ./ss5-3.8.9-8.tar.gz
 
 echo ""
 echo "安装中1..."
-cd ss5-3.8.9
+cd /ss5-3.8.9/
+
+ls
 
 echo "安装中2..."
 ./configure
