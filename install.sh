@@ -14,10 +14,18 @@ echo "解压文件中..."
 tar zxvf ./ss5-3.8.9-8.tar.gz
 
 echo ""
-echo "安装中..."
+echo "安装中1..."
 cd ss5-3.8.9
+
+echo "安装中2..."
 ./configure
+
+echo "安装中3..."
 make
+
+echo "安装中4..."
 make install
+
+
 echo "Socks安装成功"
 
