@@ -3,6 +3,13 @@ Socks5代理服务器搭建
 
 本文以Socks5 3.8.9.8为例
 
+一键安装指令：
+
+wget -q -N --no-check-certificate https://raw.githubusercontent.com/wyx176/Socks5/master/install.sh && bash install.sh
+
+#提醒#
+使用一键安装指令后可以直接跳到第5步设置
+
 1、首先，编译安装SS5需要先安装一些依赖组件
 
 yum -y install gcc gcc-c++ automake make pam-devel openldap-devel cyrus-sasl-devel openssl-devel
@@ -26,7 +33,7 @@ yum -y install gcc gcc-c++ automake make pam-devel openldap-devel cyrus-sasl-dev
     chkconfig --add ss5
     chkconfig --level 345 ss5 on
     
-5、在ss5.conf中找到auth和permit两行，按照下面的格式进行修改
+5、在/etc/opt/ss5/ss5.conf中找到auth和permit两行，按照下面的格式进行修改
 #auth       0.0.0.0/0       -         -
 #permit  -  0.0.0.0/0       -       0.0.0.0/0       -       -       -       -       -
 把前面的#号去掉就能使用了，ss5 默认使用1080端口，并允许任何人使用
