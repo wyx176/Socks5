@@ -8,8 +8,9 @@ Socks5代理服务器搭建
 yum -y install gcc gcc-c++ automake make pam-devel openldap-devel cyrus-sasl-devel openssl-devel
 
 2、去官网http://ss5.sourceforge.net/ 下载SS5最新版本的源代码
-   ss5-3.8.9-8下载地址
-　 wget https://sourceforge.net/projects/ss5/files/ss5/3.8.9-8/ss5-3.8.9-8.tar.gz
+
+   ss5-3.8.9-8下载地址
+   wget https://sourceforge.net/projects/ss5/files/ss5/3.8.9-8/ss5-3.8.9-8.tar.gz
 
 3、解压后开始编译安装：
 
@@ -40,11 +41,11 @@ SS5_OPTS=" -u root -b 0.0.0.0:8080"
   service ss5 start
   
 8、功能指令列表
- 启动 service ss5 start
- 停止 service ss5 stop
- 状态 service ss5 status
- 重启 service ss5 restart
- 卸载 service ss5 reload
+启动 service ss5 start
+停止 service ss5 stop
+状态 service ss5 status
+重启 service ss5 restart
+卸载 service ss5 reload
 
 #######################################
 #下面是添加访问权限()
