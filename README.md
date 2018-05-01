@@ -7,7 +7,7 @@
   wget -q -N --no-check-certificate https://raw.githubusercontent.com/wyx176/Socks5/master/install.sh && bash install.sh
 
   #提醒#
-  使用一键安装指令后可以直接跳到第5步设置
+  使用一键安装指令后可以直接跳到第6步设置
 
   1、首先，编译安装SS5需要先安装一些依赖组件
 
