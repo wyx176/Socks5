@@ -44,6 +44,9 @@ chkconfig --level 345 ss5 on
 
 cd /root
 rm install.sh
+
+service ss5 start
+
 echo ""
 echo "Socks5安装成功！"
 
