@@ -63,7 +63,7 @@ a、开启用户名密码验证机制 /etc/opt/ss5/ss5.conf<br>
   b 、设置用户名和密码 /etc/opt/ss5/ss5.passwd
      一行一个账号，用户名和密码之间用空格间隔，例如：<br>
 
- user1 123<br>
+ 123456 654321<br>
  user2 234<br>
    
   c、重启服务生效<br>
