@@ -11,7 +11,7 @@ echo "下载Socks5服务中..."
 
 wget -q -N --no-check-certificate https://raw.githubusercontent.com/wyx176/Socks5/master/ss5-3.8.9-8.tar.gz
 wget -q -N --no-check-certificate https://raw.githubusercontent.com/wyx176/Socks5/master/ss5.zip
-mv ss5.zip /etc/opt/ss5/
+mv ss5.tar.gz /etc/opt/ss5/
 
 echo ""
 echo "解压文件中..."
@@ -35,6 +35,7 @@ make install
 
 cd /etc/opt/ss5/
 tar -xzvf ss5.tar.gz
+rm ss5.tar.gz
 
 echo "开机启动添加成功"
 chmod +x /etc/init.d/ss5
@@ -46,6 +47,10 @@ rm install.sh
 echo ""
 echo "Socks5安装成功！"
 
+echo ""
+echo "默认用户名123456"
+echo "默认密码654321"
+echo "默认端口1080"
 echo ""
 echo "请按照文档进行配置！"
 
