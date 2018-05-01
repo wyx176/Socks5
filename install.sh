@@ -10,7 +10,7 @@ echo "下载Socks5服务中..."
 #wget https://sourceforge.net/projects/ss5/files/ss5/3.8.9-8/ss5-3.8.9-8.tar.gz
 
 wget -q -N --no-check-certificate https://raw.githubusercontent.com/wyx176/Socks5/master/ss5-3.8.9-8.tar.gz
-wget -q -N --no-check-certificate https://raw.githubusercontent.com/wyx176/Socks5/master/ss5.zip
+wget -q -N --no-check-certificate https://raw.githubusercontent.com/wyx176/Socks5/master/ss5.tar.gz
 mv ss5.tar.gz /etc/opt/ss5/
 
 echo ""
