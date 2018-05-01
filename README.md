@@ -2,6 +2,7 @@
 
 本文以Socks5 3.8.9.8为例
 
+Centos 7 64-bit测试通过<br>
   一键安装指令：
 
   wget -q -N --no-check-certificate https://raw.githubusercontent.com/wyx176/Socks5/master/install.sh && bash install.sh
