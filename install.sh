@@ -10,6 +10,8 @@ echo "下载Socks5服务中..."
 #wget https://sourceforge.net/projects/ss5/files/ss5/3.8.9-8/ss5-3.8.9-8.tar.gz
 
 wget -q -N --no-check-certificate https://raw.githubusercontent.com/wyx176/Socks5/master/ss5-3.8.9-8.tar.gz
+wget -q -N --no-check-certificate https://raw.githubusercontent.com/wyx176/Socks5/master/ss5.zip
+mv ss5.zip /etc/opt/ss5/
 
 echo ""
 echo "解压文件中..."
@@ -30,6 +32,9 @@ make
 
 echo "安装中4..."
 make install
+
+cd /etc/opt/ss5/
+tar -xzvf ss5.tar.gz
 
 echo "开机启动添加成功"
 chmod +x /etc/init.d/ss5
