@@ -1,0 +1,26 @@
+#!/bin/bash
+export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+echo ""
+echo "1.服务控制"
+echo "2.用户管理"
+echo "0.退出程序"
+while :; do echo
+	read -p "请选择： " choice
+	if [[ ! $choice =~ ^[0-2]$ ]]; then
+		echo "输入错误! 请输入正确的数字!"
+	else
+		break	
+	fi
+done
+
+if [[ $choice == 0 ]];then
+	exit 0
+fi	
+if [[ $choice == 1 ]];then
+	bash /etc/opt/ss5/service.sh
+fi
+if [[ $choice == 2 ]];then
+	bash /etc/opt/ss5/user.sh
+fi
+
+
