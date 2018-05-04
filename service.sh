@@ -53,7 +53,6 @@ if [[ $choice == 5 ]];then
 	echo "Socks5服务卸载完毕！"
 	exit 0
 	else
-		echo "计算错误，正确结果为$solve"
 		bash /etc/opt/ss5/service.sh
 	fi
 fi
