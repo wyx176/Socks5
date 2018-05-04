@@ -16,6 +16,7 @@ while :; do echo
 	fi
 done
 
+
 if [[ $choice == 0 ]];then
 	s5
 fi
@@ -41,10 +42,9 @@ if [[ $choice == 4 ]];then
 fi
 
 if [[ $choice == 5 ]];then
-  echo "确定要卸载Socks5服务吗？"
-  echo "输入‘886’开始卸载,其它则取消卸载！"
-  read -p "请输入： " T
-  if [[ ! $T ==886 ]]; then
+	echo "你在做什么？你真的这么狠心吗？"
+	read -p "输入886开始卸载,其它则取消： " c
+	if [[ "$c" == "886" ]];then
 	service ss5 stop
 	rm -rf ss5-3.8.9
 	rm -rf /etc/opt/ss5
@@ -52,7 +52,8 @@ if [[ $choice == 5 ]];then
 	clear
 	echo "Socks5服务卸载完毕！"
 	exit 0
-	
 	else
-	bash /etc/opt/ss5/service.sh
+		echo "计算错误，正确结果为$solve"
+		bash /etc/opt/ss5/service.sh
+	fi
 fi
