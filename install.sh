@@ -90,7 +90,8 @@ rm ss5.tar.gz
 
 cd /etc/opt/ss5/
 git clone https://github.com/wyx176/Socks5
-cd /etc/opt/ss5/Socks5
+chmod -R 777 /etc/opt/ss5/Socks5
+
 mv s5 /usr/loacl/bin/
 mv service.sh /etc/opt/ss5/
 mv user.sh /etc/opt/ss5/
