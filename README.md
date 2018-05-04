@@ -8,11 +8,10 @@ Centos 7 64-bit测试通过<br>
   wget -q -N --no-check-certificate https://raw.githubusercontent.com/wyx176/Socks5/master/install.sh && bash install.sh
 
   #提醒#
-  使用一键安装指令后可以直接跳到第8步
+  使用一键安装指令后可以直接跳到第8步<br>
 
-  增加管理指令 "s5"
-  可方便管理Socks5服务
-  也可以，一键添加用户，至于删除用户，还没有写23333，修改端口也没写(滑稽)，以后添加
+  增加管理指令 "s5"<br>
+  可方便管理Socks5服务,也可以一键添加用户，至于删除用户，还没有写23333，修改端口也没写(滑稽)，以后添加
 
   1、首先，编译安装SS5需要先安装一些依赖组件
 
