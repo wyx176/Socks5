@@ -97,7 +97,7 @@ mv s5 /usr/loacl/bin/
 mv service.sh /etc/opt/ss5/
 mv user.sh /etc/opt/ss5/
 #rm -rf /etc/opt/ss5/Socks5
-chmod +x /usr/loacl/bin/s5
+chmod +x /usr/local/bin/s5
 
 echo "开机启动添加成功"
 chmod +x /etc/init.d/ss5
