@@ -118,6 +118,7 @@ echo "默认密码654321"
 echo "默认端口1080"
 echo ""
 echo "请按照文档进行配置！"
-
+echo ""
+echo "Telegram搜索群组@Socks5555及时获取更新"
 echo ""
 
