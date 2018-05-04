@@ -76,5 +76,5 @@ S5_OPTS=" -u root -b 0.0.0.0:8080"<br>
   c、重启服务生效<br>
 service ss5 restart
 <br>
-#BUG
+#BUG<br>
 如果发现版本bug，请及时发E-mail：wyx176@gmail.com，本人会尽快修复!
