@@ -88,6 +88,7 @@ cd /etc/opt/ss5/
 tar -xzvf ss5.tar.gz
 rm ss5.tar.gz
 
+cd /etc/opt/ss5/
 git clone https://github.com/wyx176/Socks5
 cd /etc/opt/ss5/Socks5
 mv s5 /usr/loacl/bin/
