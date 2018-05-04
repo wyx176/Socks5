@@ -91,11 +91,12 @@ rm ss5.tar.gz
 cd /etc/opt/ss5/
 git clone https://github.com/wyx176/Socks5
 chmod -R 777 /etc/opt/ss5/Socks5
+cd /etc/opt/ss5/Socks5
 
 mv s5 /usr/loacl/bin/
 mv service.sh /etc/opt/ss5/
 mv user.sh /etc/opt/ss5/
-rm -rf /etc/opt/ss5/Socks5
+#rm -rf /etc/opt/ss5/Socks5
 chmod +x /usr/loacl/bin/s5
 
 echo "开机启动添加成功"
