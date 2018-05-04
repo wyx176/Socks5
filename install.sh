@@ -1,8 +1,11 @@
 #!/bin/sh
 export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
+service ss5 stop
+
 rm -rf ss5-3.8.9
 rm -rf /etc/opt/ss5
+rm -f /usr/local/bin/s5
 
 echo ""
 echo "安装Socks5所依赖的组件,请稍等..."
