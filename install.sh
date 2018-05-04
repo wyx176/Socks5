@@ -6,7 +6,7 @@ rm -rf ss5-3.8.9
 rm -rf /etc/opt/ss5
 rm -f /usr/local/bin/s5
 clear
-echo "清理旧环境成功！"
+echo "旧环境清理完毕！"
 echo ""
 echo "安装Socks5所依赖的组件,请稍等..."
 yum -y install gcc gcc-c++ automake make pam-devel openldap-devel cyrus-sasl-devel openssl-devel
@@ -93,10 +93,10 @@ git clone https://github.com/wyx176/Socks5
 chmod -R 777 /etc/opt/ss5/Socks5
 cd /etc/opt/ss5/Socks5
 
-mv s5 /usr/loacl/bin/
+mv s5 /usr/local/bin/
 mv service.sh /etc/opt/ss5/
 mv user.sh /etc/opt/ss5/
-#rm -rf /etc/opt/ss5/Socks5
+rm -rf /etc/opt/ss5/Socks5
 chmod +x /usr/local/bin/s5
 
 echo "开机启动添加成功"
