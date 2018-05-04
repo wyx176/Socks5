@@ -36,6 +36,16 @@ if [[ $choice == 3 ]];then
 fi
 
 if [[ $choice == 4 ]];then
-	service ss5 reload
+	service ss5 status
 	bash /etc/opt/ss5/service.sh
+fi
+
+if [[ $choice == 5 ]];then
+	service ss5 stop
+	rm -rf ss5-3.8.9
+	rm -rf /etc/opt/ss5
+	rm -f /usr/local/bin/s5
+	clear
+	echo "Socks5服务卸载完毕！"
+	exit 0
 fi
