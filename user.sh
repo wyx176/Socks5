@@ -52,7 +52,7 @@ fi
 
 if [[ $choice == 4 ]];then
 cd /etc/opt/ss5/
-tar -xzvf ss5.tar.gz
+tar -xzvf uss5.tar.gz
 echo "开启账户验证成功"
 echo ""
 bash /etc/opt/ss5/user.sh
