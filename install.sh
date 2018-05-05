@@ -96,6 +96,7 @@ cd /etc/opt/ss5/Socks5
 mv s5 /usr/local/bin/
 mv service.sh /etc/opt/ss5/
 mv user.sh /etc/opt/ss5/
+mv uss5.tar.gz /etc/opt/ss5/
 rm -rf /etc/opt/ss5/Socks5
 chmod +x /usr/local/bin/s5
 
