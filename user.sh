@@ -66,7 +66,7 @@ echo "当前未开启账户验证！"
 echo ""
 bash /etc/opt/ss5/user.sh
 else
-mv -f uss5.conf ss5.conf
+mv -f unss5.conf ss5.conf
 echo "账户验证开启成功！"
 echo ""
 bash /etc/opt/ss5/user.sh
