@@ -1,8 +1,14 @@
 #!/bin/bash
 #Set PATH
+echo ""
+echo "Socks5默认开启账户验证"
+echo "关闭账户验证后帐号密码将失效"
+echo ""
 echo "1.查看用户"
 echo "2.添加用户"
 echo "3.删除用户"
+echo "4.开启账户验证"
+echo "5.关闭账户验证"
 echo "0.返回"
 while :; do echo
 	read -p "请选择： " choice
@@ -43,3 +49,28 @@ echo "*添加用户成功*"
 echo  ""
 bash /etc/opt/ss5/user.sh
 fi
+
+if [[ $choice == 4 ]];then
+cd /etc/opt/ss5/
+tar -xzvf ss5.tar.gz
+echo "开启账户验证成功"
+echo ""
+bash /etc/opt/ss5/user.sh
+fi
+
+if [[ $choice == 5 ]];then
+cd /etc/opt/ss5/
+
+if [ ! -f "unss5.conf" ];then
+echo "当前未开启账户验证！"
+echo ""
+bash /etc/opt/ss5/user.sh
+else
+mv -f uss5.conf ss5.conf
+echo "账户验证开启成功！"
+echo ""
+bash /etc/opt/ss5/user.sh
+fi
+
+fi
+
