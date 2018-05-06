@@ -53,6 +53,7 @@ fi
 if [[ $choice == 4 ]];then
 cd /etc/opt/ss5/
 tar -xzvf uss5.tar.gz
+service ss5 restart
 echo "开启账户验证成功"
 echo ""
 bash /etc/opt/ss5/user.sh
@@ -67,6 +68,7 @@ echo ""
 bash /etc/opt/ss5/user.sh
 else
 mv -f unss5.conf ss5.conf
+service ss5 restart
 echo "账户验证关闭成功！"
 echo ""
 bash /etc/opt/ss5/user.sh
