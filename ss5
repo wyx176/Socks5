@@ -1,0 +1,2 @@
+# Add startup option here
+SS5_OPTS="-u root -b 0.0.0.0:5555"
