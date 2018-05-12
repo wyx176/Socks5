@@ -38,4 +38,4 @@
 
 ## 写在最后 ##
 如果发现版本bug，请及时发E-mail：wyx176@gmail.com，本人会尽快修复!<br>
-Telegram交流群:t.me/Socks5555
+Telegram交流群:t.me/Socks55555
