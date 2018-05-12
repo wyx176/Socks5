@@ -19,7 +19,7 @@
 - 输入 s5 即可启动控制面板
 
 ## 一键安装或更新到最新 ##
- wget -q -N --no-check-certificate https://raw.githubusercontent.com/wyx176/Socks5/master/install.sh && bash install.sh
+ <pre><code>wget -q -N --no-check-certificate https://raw.githubusercontent.com/wyx176/Socks5/master/install.sh && bash install.sh</code></pre>
 
 
 
