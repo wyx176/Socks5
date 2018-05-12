@@ -92,8 +92,8 @@ cd /etc/opt/ss5/
 git clone https://github.com/wyx176/Socks5
 chmod -R 777 /etc/opt/ss5/Socks5
 if [ ! -d "/etc/opt/ss5/Socks5" ]; then
-  exit 0
   echo "缺失文件，安装失败！"
+  exit 0
 fi
 cd /etc/opt/ss5/Socks5
 
