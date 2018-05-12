@@ -17,9 +17,11 @@ if [[ $choice == 0 ]];then
 	exit 0
 fi	
 if [[ $choice == 1 ]];then
+	clear
 	bash /etc/opt/ss5/service.sh
 fi
 if [[ $choice == 2 ]];then
+	clear
 	bash /etc/opt/ss5/user.sh
 fi
 
