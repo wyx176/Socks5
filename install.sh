@@ -73,9 +73,13 @@ if [ ! -f "/usr/local/bin/s5" ] || [ ! -f "/etc/opt/ss5/service.sh" ]; then
   exit 0
 
 else
+echo ""
 service ss5 start
 echo ""
 echo "Socks5安装成功！"
+echo ""
+echo "输入"s5"启动Socks5控制面板"
+echo ""
 echo "Socks5服务可能不会随系统一起启动"
 echo ""
 echo "默认用户名: 123456"
