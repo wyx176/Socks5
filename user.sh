@@ -1,6 +1,6 @@
 #!/bin/bash
 #Set PATH
-clear
+echo ""
 echo "Socks5默认开启账户验证"
 echo "关闭账户验证后帐号密码将失效"
 echo ""
@@ -23,7 +23,7 @@ s5
 fi
 
 if [[ $choice == 1 ]];then
-echo ""
+clear
 echo "用户名	密码"
 myFile=/etc/opt/ss5/ss5.passwd
 cat $myFile | while read line
@@ -31,13 +31,11 @@ do
 echo "$line" #输出整行内容
 #echo "$line" | awk '{print $1}' #输出每行第一个字
 done
-echo ""
-echo ""
 bash /etc/opt/ss5/user.sh
 fi
 
 if [[ $choice == 2 ]];then
-echo ""
+clear
 cd /etc/opt/ss5
 
 read -p "输入用户名： " uname
@@ -46,16 +44,15 @@ read -p "输入密码： " upasswd
 echo ""
 echo -e $uname $upasswd >> ss5.passwd
 echo "*添加用户成功*"
-echo  ""
 bash /etc/opt/ss5/user.sh
 fi
 
 if [[ $choice == 4 ]];then
+clear
 cd /etc/opt/ss5/
 tar -xzvf uss5.tar.gz
 service ss5 restart
 echo "开启账户验证成功"
-echo ""
 bash /etc/opt/ss5/user.sh
 fi
 
@@ -63,6 +60,7 @@ if [[ $choice == 5 ]];then
 cd /etc/opt/ss5/
 
 if [ ! -f "unss5.conf" ];then
+clear
 echo "当前未开启账户验证！"
 echo ""
 bash /etc/opt/ss5/user.sh
@@ -70,7 +68,6 @@ else
 mv -f unss5.conf ss5.conf
 service ss5 restart
 echo "账户验证关闭成功！"
-echo ""
 bash /etc/opt/ss5/user.sh
 fi
 
