@@ -106,7 +106,7 @@ echo "安装中1..."
 cd ss5-3.8.9
 
 ls
-export EXTRA_LIBS=’-lcrypto’
+
 echo "安装中2..."
 ./configure
 
