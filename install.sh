@@ -53,6 +53,13 @@ if [[ ${OS} == Debian ]];then
 	apt-get install git unzip wget -y
     
 fi
+
+check(){
+	if [ ! -d "/etc/opt/ss5/Socks5" ]; then
+  echo "缺失文件，安装失败！"
+  exit 0
+fi
+}
 echo ""
 echo "下载Socks5服务中..."
 #wget https://sourceforge.net/projects/ss5/files/ss5/3.8.9-8/ss5-3.8.9-8.tar.gz
@@ -91,10 +98,7 @@ rm ss5.tar.gz
 cd /etc/opt/ss5/
 git clone https://github.com/wyx176/Socks5
 chmod -R 777 /etc/opt/ss5/Socks5
-if [ ! -d "/etc/opt/ss5/Socks5" ]; then
-  echo "缺失文件，安装失败！"
-  exit 0
-fi
+check
 cd /etc/opt/ss5/Socks5
 
 mv s5 /usr/local/bin/
