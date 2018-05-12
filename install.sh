@@ -93,7 +93,6 @@ rm ss5.tar.gz
 cd /etc/opt/ss5/
 git clone https://github.com/wyx176/Socks5
 chmod -R 777 /etc/opt/ss5/Socks5
-check
 cd /etc/opt/ss5/Socks5
 
 mv s5 /usr/local/bin/
@@ -115,8 +114,20 @@ echo "Socks5服务可能不会随系统一起启动"
 cd /root
 rm install.sh
 
-service ss5 start
+check(){
+if [ ! -d "/etc/opt/ss5/Socks5" ]; then
+  echo "缺失文件，安装失败！！！"
+  exit 0
 
+elseif [ ! -f "/usr/local/bin/s5" ]; then
+  echo "缺失文件，安装失败！！！"
+  exit 0
+
+elseif [ ! -f "/etc/opt/ss5/service.sh" ]; then
+  echo "缺失文件，安装失败！！！"
+  exit 0
+  else
+service ss5 start
 echo ""
 echo "Socks5安装成功！"
 
@@ -129,12 +140,6 @@ echo "请按照文档进行配置！"
 echo ""
 echo "Telegram搜索群组@Socks55555及时获取更新"
 echo ""
+fi
 
-check($num){
-if  [ $num==1 ]; then
-if [ ! -d "/etc/opt/ss5/Socks5" ]; then
-  echo "缺失文件，安装失败！！！"
-  exit 0
-fi
-fi
 }
