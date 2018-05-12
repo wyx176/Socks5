@@ -3,7 +3,7 @@ export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 clear
 echo "1.服务控制"
 echo "2.用户管理"
-echo "0.退出程序"
+echo "0.退出面板"
 while :; do echo
 	read -p "请选择： " choice
 	if [[ ! $choice =~ ^[0-2]$ ]]; then
