@@ -64,7 +64,7 @@ echo "安装Socks5所依赖的组件,请稍等..."
 yum -y install gcc gcc-c++ automake make pam-devel openldap-devel cyrus-sasl-devel openssl-devel
 
 check(){
-if [ ! -d "/etc/opt/ss5/Socks5" ] || [ ! -f "/usr/local/bin/s5" ] || [ ! -f "/etc/opt/ss5/service.sh" ]; then
+if [ ! -f "/usr/local/bin/s5" ] || [ ! -f "/etc/opt/ss5/service.sh" ]; then
   echo ""
   echo "缺失文件，安装失败！！！"
   echo "发送邮件反馈bug ：wyx176@gmail.com"
@@ -102,18 +102,15 @@ tar zxvf ./ss5-3.8.9-8.tar.gz
 
 echo ""
 rm ss5-3.8.9-8.tar.gz
-echo "安装中1..."
+echo "安装中..."
+
 cd ss5-3.8.9
-
 ls
-
-echo "安装中2..."
 ./configure
 make
-
-echo "安装中4..."
 make install
 
+echo "安装中2..."
 cd /root
 mv ss5.tar.gz /etc/opt/ss5/
 cd /etc/opt/ss5/
