@@ -115,18 +115,11 @@ cd /root
 rm install.sh
 
 check(){
-if [ ! -d "/etc/opt/ss5/Socks5" ]; then
+if [ ! -d "/etc/opt/ss5/Socks5" ] || [ ! -f "/usr/local/bin/s5" ] || [ ! -f "/etc/opt/ss5/service.sh" ]; then
   echo "缺失文件，安装失败！！！"
   exit 0
 
-else if [ ! -f "/usr/local/bin/s5" ]; then
-  echo "缺失文件，安装失败！！！"
-  exit 0
-
-else if [ ! -f "/etc/opt/ss5/service.sh" ]; then
-  echo "缺失文件，安装失败！！！"
-  exit 0
-  else
+else
 service ss5 start
 echo ""
 echo "Socks5安装成功！"
