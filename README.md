@@ -1,84 +1,26 @@
-#SOCKS5代理服务器搭建
+# Socks5管理脚本
+- [x] 稳定版V1.1.2
 
-本文以Socks5 3.8.9.8为例
+## 介绍 ##
+一个Shell脚本，集成ss5管理，启动，添加账号等基本操作。是一个基于Socks5官方的辅助脚本。方便用户操作，并且支持快速构建ss5服务环境。
 
-Centos 7 64-bit测试通过<br>
-  一键安装指令：
+- 请谨慎使用，出问题概不负责！！！！
 
-  wget -q -N --no-check-certificate https://raw.githubusercontent.com/wyx176/Socks5/master/install.sh && bash install.sh
+## 系统支持 ##
+* CentOS 6
+* CentOS 7
 
-  #提醒#
-  使用一键安装指令后可以直接跳到第8步<br>
-  更新内容
-  增加管理指令 "s5"<br>
-  可方便管理Socks5服务<br>
-  一键添加用户，<br>
-  一键启动或关闭账户验证<br>
-  修改默认端口为1080改成5555，解决部分服务占领1080端口导致服务异常问题<br>
-  至于删除用户，还没有写23333，修改端口也没写(滑稽)，以后添加<br>
--bash: wget: command not found
-  1、首先，编译安装SS5需要先安装一些依赖组件
+## 功能 ##
+ 全自动无人值守安装，服务端部署只需一条命令，您和ss5都是如此的优雅：）
+- 一键开启、关闭ss5服务
+- 添加、删除、修改用户端口、密码
+- 支持傻瓜式用户添加,小白也可以用
+- 自动修改防火墙规则
+- 输入 s5 即可启动控制面板
 
-  yum -y install gcc gcc-c++ automake make pam-devel openldap-devel cyrus-sasl-devel openssl-devel
+## 一键安装或更新到最新 ##
+wget -q -N --no-check-certificate https://raw.githubusercontent.com/wyx176/Socks5/master/install.sh && bash install.sh
 
-  2、去官网http://ss5.sourceforge.net/ 下载SS5最新版本的源代码
-    ss5-3.8.9-8下载地址<br>
-  wget https://sourceforge.net/projects/ss5/files/ss5/3.8.9-8/ss5-3.8.9-8.tar.gz
-
-  3、解压后开始编译安装：
-
-  tar zxvf ./ss5-3.8.9-8.tar.gz
-　cd ss5-3.8.9
-  ./configure
-  make
-  make install
-
-  4、让SS5随系统一起启动
-
-    chmod +x /etc/init.d/ss5
-    chkconfig --add ss5
-    chkconfig --level 345 ss5 on
-    
-  5、在/etc/opt/ss5/ss5.conf中找到auth和permit两行，按照下面的格式进行修改<br>
-  #auth       0.0.0.0/0       -         - <br>
-  #permit  -  0.0.0.0/0       -       0.0.0.0/0       -       -       -       -       -<br>
-  把前面的#号去掉就能使用了，ss5 默认使用5555端口，并允许任何人使用
-
-<br>
-下面是添加访问权限，使用一键搭建的可以不用管<br>
- <br>
-a、开启用户名密码验证机制 /etc/opt/ss5/ss5.conf<br>
-
-    在ss5.conf中找到auth和permit两行，按照下面的格式进行修改
-    auth       0.0.0.0/0       -         u
-    permit  u  0.0.0.0/0       -       0.0.0.0/0       -       -       -       -       -
-
-  b 、设置用户名和密码 /etc/opt/ss5/ss5.passwd
-     一行一个账号，用户名和密码之间用空格间隔，例如：<br>
-
- 123456 654321<br>
- user2  234<br>
-
-
-6、启动ss5<br>
-service ss5 start<br>
-  
-7、功能指令列表<br>
-  启动 service ss5 start<br>
-  停止 service ss5 stop<br>
-  状态 service ss5 status<br>
-  重启 service ss5 restart<br>
-  卸载 service ss5 reload<br>
-  
-8、如果要修改默认端口，(暂时需要手动修改)请修改  /etc/sysconfig/ss5
-
-  在/etc/sysconfig/ss5这个文件中，添加下面这一行命令，-b后面的参数代表监听的ip地址和端口号(一定要记得配置安全组开放SS5监听的端口)<br>
-S5_OPTS=" -u root -b 0.0.0.0:5555"<br> 
-
-    
-  c、重启服务生效<br>
-service ss5 restart
-<br>
-#BUG<br>
-如果发现版本bug，请及时发E-mail：wyx176@gmail.com，本人会尽快修复!<br>
+## 写在最后 ##
+如果发现版本bug，请及时发E-mail：wyx176@gmail.com，本人会尽快修复!
 Telegram群:t.me/Socks5555
