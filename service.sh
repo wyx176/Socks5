@@ -1,6 +1,6 @@
 #!/bin/bash
 #Set PATH
-echo ""
+clear
 echo "1.启动"
 echo "2.停止"
 echo "3.重启"
