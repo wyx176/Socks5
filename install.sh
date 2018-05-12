@@ -54,14 +54,7 @@ if [[ ${OS} == Debian ]];then
     
 fi
 
-check($num){
-if  [ $num==1 ]; then
-if [ ! -d "/etc/opt/ss5/Socks5" ]; then
-  echo "缺失文件，安装失败！！！"
-  exit 0
-fi
-fi
-}
+
 echo ""
 echo "下载Socks5服务中..."
 #wget https://sourceforge.net/projects/ss5/files/ss5/3.8.9-8/ss5-3.8.9-8.tar.gz
@@ -137,3 +130,11 @@ echo ""
 echo "Telegram搜索群组@Socks55555及时获取更新"
 echo ""
 
+check($num){
+if  [ $num==1 ]; then
+if [ ! -d "/etc/opt/ss5/Socks5" ]; then
+  echo "缺失文件，安装失败！！！"
+  exit 0
+fi
+fi
+}
