@@ -56,7 +56,7 @@ fi
 
 check(){
 	if [ ! -d "/etc/opt/ss5/Socks5" ]; then
-  echo "缺失文件，安装失败！"
+  echo "缺失文件，安装失败！！"
   exit 0
 fi
 }
