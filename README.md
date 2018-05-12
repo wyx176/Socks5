@@ -16,7 +16,7 @@ Centos 7 64-bit测试通过<br>
   一键启动或关闭账户验证<br>
   修改默认端口为1080改成5555，解决部分服务占领1080端口导致服务异常问题<br>
   至于删除用户，还没有写23333，修改端口也没写(滑稽)，以后添加<br>
-
+-bash: wget: command not found
   1、首先，编译安装SS5需要先安装一些依赖组件
 
   yum -y install gcc gcc-c++ automake make pam-devel openldap-devel cyrus-sasl-devel openssl-devel
