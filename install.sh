@@ -86,7 +86,7 @@ echo "默认用户名: 123456"
 echo "默认密码  : 654321"
 echo "默认端口  : 5555"
 echo ""
-echo "添加Telegram搜索群组@Socks55555及时获取更新"
+echo "添加Telegram群组@Socks55555及时获取更新"
 echo ""
 fi
 }
