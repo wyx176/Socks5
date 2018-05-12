@@ -30,8 +30,11 @@ fi
 
 #Install Basic Tools
 if [[ ${OS} == Ubuntu ]];then
-	echo "目前不支持Ubuntu系统！"
-	echo "请使用CentOS搭建"
+	echo ""
+	echo "***********************"
+	echo "*目前不支持Ubuntu系统！*"
+	echo "*请使用CentOS搭建     *"
+	echo "**********************"
 	exit 0
 	apt-get install git unzip wget -y
 	
@@ -42,9 +45,10 @@ if [[ ${OS} == CentOS ]];then
    
 fi
 if [[ ${OS} == Debian ]];then
-	echo "目前不支持Debian系统！"
-	echo "请使用CentOS搭建"
-	exit 0
+	echo "***********************"
+	echo "*目前不支持Debian系统！*"
+	echo "*请使用CentOS搭建     *"
+	echo "**********************"
 	apt-get install git unzip wget -y
     
 fi
