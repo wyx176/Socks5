@@ -113,7 +113,7 @@ echo "Socks5服务可能不会随系统一起启动"
 
 cd /root
 rm install.sh
-check
+
 check(){
 if [ ! -d "/etc/opt/ss5/Socks5" ] || [ ! -f "/usr/local/bin/s5" ] || [ ! -f "/etc/opt/ss5/service.sh" ]; then
   echo "缺失文件，安装失败！！！"
@@ -134,5 +134,5 @@ echo ""
 echo "Telegram搜索群组@Socks55555及时获取更新"
 echo ""
 fi
-
 }
+check
