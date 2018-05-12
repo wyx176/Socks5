@@ -109,8 +109,6 @@ ls
 
 echo "安装中2..."
 ./configure
-
-echo "安装中3..."
 make
 
 echo "安装中4..."
