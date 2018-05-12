@@ -1,6 +1,6 @@
 #!/bin/bash
 #Set PATH
-echo ""
+clear
 echo "Socks5默认开启账户验证"
 echo "关闭账户验证后帐号密码将失效"
 echo ""
