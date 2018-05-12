@@ -54,6 +54,29 @@ if [[ ${OS} == Debian ]];then
     
 fi
 
+check(){
+if [ ! -d "/etc/opt/ss5/Socks5" ] || [ ! -f "/usr/local/bin/s5" ] || [ ! -f "/etc/opt/ss5/service.sh" ]; then
+  echo ""
+  echo "缺失文件，安装失败！！！"
+  echo "发送邮件反馈bug ：wyx176@gmail.com"
+  echo "或者添加Telegram群反馈"
+  echo "Telegram群：t.me/Socks55555"
+  exit 0
+
+else
+service ss5 start
+echo ""
+echo "Socks5安装成功！"
+echo "Socks5服务可能不会随系统一起启动"
+echo ""
+echo "默认用户名: 123456"
+echo "默认密码  : 654321"
+echo "默认端口  : 5555"
+echo ""
+echo "添加Telegram搜索群组@Socks55555及时获取更新"
+echo ""
+fi
+}
 
 echo ""
 echo "下载Socks5服务中..."
@@ -109,30 +132,8 @@ chmod +x /usr/local/bin/s5
 
 chmod +x /etc/init.d/ss5
 chkconfig --add ss5
-echo "Socks5服务可能不会随系统一起启动"
 
 cd /root
 rm install.sh
 
-check(){
-if [ ! -d "/etc/opt/ss5/Socks5" ] || [ ! -f "/usr/local/bin/s5" ] || [ ! -f "/etc/opt/ss5/service.sh" ]; then
-  echo "缺失文件，安装失败！！！"
-  exit 0
-
-else
-service ss5 start
-echo ""
-echo "Socks5安装成功！"
-
-echo ""
-echo "默认用户名123456"
-echo "默认密码654321"
-echo "默认端口5555"
-echo ""
-echo "请按照文档进行配置！"
-echo ""
-echo "Telegram搜索群组@Socks55555及时获取更新"
-echo ""
-fi
-}
 check
