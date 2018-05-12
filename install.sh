@@ -1,15 +1,6 @@
 #!/bin/sh
 export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
-service ss5 stop
-rm -rf ss5-3.8.9
-rm -rf /etc/opt/ss5
-rm -f /usr/local/bin/s5
-clear
-echo "旧环境清理完毕！"
-echo ""
-echo "安装Socks5所依赖的组件,请稍等..."
-yum -y install gcc gcc-c++ automake make pam-devel openldap-devel cyrus-sasl-devel openssl-devel
 #Check OS
 if [ -n "$(grep 'Aliyun Linux release' /etc/issue)" -o -e /etc/redhat-release ];then
     OS=CentOS
@@ -39,7 +30,9 @@ fi
 
 #Install Basic Tools
 if [[ ${OS} == Ubuntu ]];then
-	
+	echo "目前不支持Ubuntu系统！"
+	echo "请使用CentOS搭建"
+	exit 0
 	apt-get install git unzip wget -y
 	
 fi
@@ -49,10 +42,22 @@ if [[ ${OS} == CentOS ]];then
    
 fi
 if [[ ${OS} == Debian ]];then
-	
+	echo "目前不支持Debian系统！"
+	echo "请使用CentOS搭建"
+	exit 0
 	apt-get install git unzip wget -y
     
 fi
+
+service ss5 stop
+rm -rf ss5-3.8.9
+rm -rf /etc/opt/ss5
+rm -f /usr/local/bin/s5
+clear
+echo "旧环境清理完毕！"
+echo ""
+echo "安装Socks5所依赖的组件,请稍等..."
+yum -y install gcc gcc-c++ automake make pam-devel openldap-devel cyrus-sasl-devel openssl-devel
 
 check(){
 if [ ! -d "/etc/opt/ss5/Socks5" ] || [ ! -f "/usr/local/bin/s5" ] || [ ! -f "/etc/opt/ss5/service.sh" ]; then
