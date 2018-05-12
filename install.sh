@@ -119,11 +119,11 @@ if [ ! -d "/etc/opt/ss5/Socks5" ]; then
   echo "缺失文件，安装失败！！！"
   exit 0
 
-elseif [ ! -f "/usr/local/bin/s5" ]; then
+else if [ ! -f "/usr/local/bin/s5" ]; then
   echo "缺失文件，安装失败！！！"
   exit 0
 
-elseif [ ! -f "/etc/opt/ss5/service.sh" ]; then
+else if [ ! -f "/etc/opt/ss5/service.sh" ]; then
   echo "缺失文件，安装失败！！！"
   exit 0
   else
