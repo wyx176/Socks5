@@ -1,6 +1,6 @@
 #!/bin/bash
 #Set PATH
-clear
+echo ""
 echo "1.启动"
 echo "2.停止"
 echo "3.重启"
@@ -22,26 +22,31 @@ if [[ $choice == 0 ]];then
 fi
 	
 if [[ $choice == 1 ]];then
+	clear
 	service ss5 start
 	bash /etc/opt/ss5/service.sh
 fi
 
 if [[ $choice == 2 ]];then
+	clear
 	service ss5 stop
 	bash /etc/opt/ss5/service.sh
 fi
 
 if [[ $choice == 3 ]];then
+	clear
 	service ss5 restart
 	bash /etc/opt/ss5/service.sh
 fi
 
 if [[ $choice == 4 ]];then
+	clear
 	service ss5 status
 	bash /etc/opt/ss5/service.sh
 fi
 
 if [[ $choice == 5 ]];then
+	clear
 	echo "你在做什么？你真的这么狠心吗？"
 	read -p "输入886开始卸载,其它则取消： " c
 	if [[ "$c" == "886" ]];then
