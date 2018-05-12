@@ -1,6 +1,6 @@
 #!/bin/bash
 export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-echo ""
+clear
 echo "1.服务控制"
 echo "2.用户管理"
 echo "0.退出程序"
