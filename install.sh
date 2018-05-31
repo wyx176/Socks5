@@ -137,9 +137,13 @@ tar -xzvf uss5.tar.gz
 rm -rf /etc/opt/ss5/Socks5
 chmod +x /usr/local/bin/s5
 
+cd /var/run/
+mkdir ss5
+
 
 chmod +x /etc/init.d/ss5
 chkconfig --add ss5
+chkconfig --level 345 ss5 on
 
 cd /root
 rm install.sh
