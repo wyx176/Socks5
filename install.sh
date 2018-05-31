@@ -137,9 +137,12 @@ tar -xzvf uss5.tar.gz
 rm -rf /etc/opt/ss5/Socks5
 chmod +x /usr/local/bin/s5
 
-cd /var/run/
-mkdir ss5
-
+if [ ! -d "/var/run/ss5/" ];then
+mkdir /var/run/ss5/
+echo "create ss5 success!"
+else
+echo "/ss5/ is OK!"
+fi
 
 chmod +x /etc/init.d/ss5
 chkconfig --add ss5
