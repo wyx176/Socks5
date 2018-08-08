@@ -35,6 +35,17 @@
  表示修改端口为6666<br>
 - 3.重启ss5服务生效<br>
  service ss5 restart<br>
+ 
+## 使用命令修改账号和密码 ##
+- 1.打开如下文件中的ss5.passwd文件<br>
+ /etc/opt/ss5passwd<<br>
+- 2.打开后能看到如下<br>
+ 123456 654321<br>
+- 3.修改注意，前面的是账号后面的是密码(一定要记得账户和密码之间有一个空格)<br>
+ admin 78906<br>
+ 表示修改账户为admin 密码为78906<br>
+- 4.重启ss5服务生效<br>
+ service ss5 restart<br>
 
 ## 写在最后 ##
 如果发现版本bug，请及时发E-mail：wyx176@gmail.com，本人会尽快修复!<br>
