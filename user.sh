@@ -48,6 +48,14 @@ echo "*添加用户成功*"
 bash /etc/opt/ss5/user.sh
 fi
 
+if [[ $choice == 3 ]];then
+clear
+read -p "输入用户名：" uname
+echo ""
+sed -i -e '/\$uname/d' /etc/opt/ss5/ss5.passwd
+echo "执行成功,重启s5后生效"
+
+fi
 if [[ $choice == 4 ]];then
 clear
 cd /etc/opt/ss5/
