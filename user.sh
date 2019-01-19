@@ -2,6 +2,7 @@
 #Set PATH
 userfile=/etc/opt/ss5/user.sh
 passwdFile=/etc/opt/ss5/ss5.passwd
+confFile=/etc/opt/ss5/ss5.conf
 echo ""
 echo "*******************************"
 if [ ! -f "unss5.conf" ];then
@@ -65,26 +66,18 @@ bash $userfile
 fi
 if [[ $choice == 4 ]];then
 clear
-cd /etc/opt/ss5/
-tar -xzvf uss5.tar.gz
+sed -i '87c auth    0.0.0.0/0               -               u' $confFile
+sed -i '203c permit u	0.0.0.0/0	-	0.0.0.0/0	-	-	-	-	-' $confFile
 service ss5 restart
 echo "开启账户验证成功"
 bash $userfile
 fi
 
 if [[ $choice == 5 ]];then
-cd /etc/opt/ss5/
-
-if [ ! -f "unss5.conf" ];then
 clear
-echo "当前未开启账户验证！"
-echo ""
-bash $userfile
-else
-mv -f unss5.conf ss5.conf
+sed -i '87c auth    0.0.0.0/0               -               -' $confFile
+sed -i '203c permit -	0.0.0.0/0	-	0.0.0.0/0	-	-	-	-	-' $confFile
 service ss5 restart
 echo "账户验证关闭成功！"
 bash $userfile
-fi
-
 fi
