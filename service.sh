@@ -23,9 +23,12 @@ if [[ $choice == 0 ]];then
 fi
 	
 if [[ $choice == 1 ]];then
-	clear
-	service ss5 start
-	bash $serviceFile
+clear
+if [ ! -d "/var/run/ss5/" ];then
+mkdir /var/run/ss5
+fi
+service ss5 start
+  bash $serviceFile
 fi
 
 if [[ $choice == 2 ]];then
