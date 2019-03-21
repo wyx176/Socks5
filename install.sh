@@ -53,17 +53,91 @@ if [[ ${OS} == Debian ]];then
     
 fi
 
+#1.清理旧环境和配置新环境
+Clear(){
 service ss5 stop
-rm -rf ss5-3.8.9
+rm -rf /run/ss5
+rm -f 	/run/lock/subsys/ss5
 rm -rf /etc/opt/ss5
 rm -f /usr/local/bin/s5
+rm -rf 	/usr/lib/ss5
+rm -f /usr/sbin/ss5
+rm -rf /usr/share/doc/ss5
+rm -rf /root/ss5-3.8.9
+rm -f /etc/sysconfig/ss5
+rm -f /etc/rc.d/init.d/ss5
+rm -f /etc/pam.d/ss5
+rm -rf /var/log/ss5
 clear
 echo "旧环境清理完毕！"
 echo ""
 echo "安装Socks5所依赖的组件,请稍等..."
 yum -y install gcc gcc-c++ automake make pam-devel openldap-devel cyrus-sasl-devel openssl-devel
+yum update -y nss curl libcurl 
+}
 
+#2.下载Socks5服务
+Download()
+{
+echo ""
+echo "下载Socks5服务中..."
+cd  /root
+git clone https://github.com/wyx176/Socks5
+}
+
+
+#3.安装Socks5服务程序
+InstallSock5()
+{
+echo ""
+echo "解压文件中..."
+cd  /root/Socks5
+tar zxvf ./ss5-3.8.9-8.tar.gz
+
+echo "安装中..."
+cd /root/Socks5/ss5-3.8.9
+./configure
+make
+make install
+}
+
+#4.安装控制面板配置参数
+InstallPanel()
+{
+#cd  /root/Socks5
+mv /root/Socks5/service.sh /etc/opt/ss5/
+mv /root/Socks5/user.sh /etc/opt/ss5/
+mv /root/Socks5/ss5 /etc/sysconfig/
+mv /root/Socks5/s5 /usr/local/bin/
+chmod +x /usr/local/bin/s5
+
+#设置默认用户名、默认开启帐号验证
+uname="123456"
+upasswd="654321"
+confFile=/etc/opt/ss5/ss5.conf
+echo -e $uname $upasswd >> /etc/opt/ss5/ss5.passwd
+sed -i '87c auth    0.0.0.0/0               -               u' $confFile
+sed -i '203c permit u	0.0.0.0/0	-	0.0.0.0/0	-	-	-	-	-' $confFile
+
+#判断ss5文件夹是否存在、
+if [ ! -d "/var/run/ss5/" ];then
+mkdir /var/run/ss5/
+echo "create ss5 success!"
+else
+echo "/ss5/ is OK!"
+fi
+
+#添加开机启动
+chmod +x /etc/init.d/ss5
+chkconfig --add ss5
+chkconfig --level 345 ss5 on
+}
+
+#5.检测是否安装完整
 check(){
+cd /root
+rm -rf /root/Socks5
+rm -rf /root/install.sh
 if [ ! -f "/usr/local/bin/s5" ] || [ ! -f "/etc/opt/ss5/service.sh" ]; then
   echo ""
   echo "缺失文件，安装失败！！！"
@@ -73,6 +147,7 @@ if [ ! -f "/usr/local/bin/s5" ] || [ ! -f "/etc/opt/ss5/service.sh" ]; then
   exit 0
 
 else
+clear
 echo ""
 service ss5 start
 echo ""
@@ -91,64 +166,9 @@ echo ""
 fi
 }
 
-echo ""
-echo "下载Socks5服务中..."
-#wget https://sourceforge.net/projects/ss5/files/ss5/3.8.9-8/ss5-3.8.9-8.tar.gz
 
-wget -q -N --no-check-certificate https://raw.githubusercontent.com/wyx176/Socks5/master/ss5-3.8.9-8.tar.gz
-wget -q -N --no-check-certificate https://raw.githubusercontent.com/wyx176/Socks5/master/ss5.tar.gz
-
-
-
-echo ""
-echo "解压文件中..."
-tar zxvf ./ss5-3.8.9-8.tar.gz
-
-echo ""
-rm ss5-3.8.9-8.tar.gz
-echo "安装中..."
-
-cd ss5-3.8.9
-ls
-./configure
-make
-make install
-
-echo "安装中2..."
-cd /root
-mv ss5.tar.gz /etc/opt/ss5/
-cd /etc/opt/ss5/
-tar -xzvf ss5.tar.gz
-rm ss5.tar.gz
-
-cd /etc/opt/ss5/
-git clone https://github.com/wyx176/Socks5
-chmod -R 777 /etc/opt/ss5/Socks5
-cd /etc/opt/ss5/Socks5
-
-mv s5 /usr/local/bin/
-mv service.sh /etc/opt/ss5/
-mv user.sh /etc/opt/ss5/
-mv uss5.tar.gz /etc/opt/ss5/
-mv ss5 /etc/sysconfig/
-
-cd /etc/opt/ss5/
-tar -xzvf uss5.tar.gz
-rm -rf /etc/opt/ss5/Socks5
-chmod +x /usr/local/bin/s5
-
-if [ ! -d "/var/run/ss5/" ];then
-mkdir /var/run/ss5/
-echo "create ss5 success!"
-else
-echo "/ss5/ is OK!"
-fi
-
-chmod +x /etc/init.d/ss5
-chkconfig --add ss5
-chkconfig --level 345 ss5 on
-
-cd /root
-rm install.sh
-
+Clear
+Download
+InstallSock5
+InstallPanel
 check
