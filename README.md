@@ -32,18 +32,17 @@
  重启命令:service ss5 restart<br>
  
 ## 更新日志 ##
--2019.03.21 v1.1.5 
-1.重写安装代码，优化安装过程。
-2.测试了以下系统都能正常使用：
-CentOS-7.0-x86_64
-CentOS-7.3-x86_64
-centos-7.4-x86_64
-centos-7.5-x86_64
-centos-7.6-x86_64
-
-CentOS-6.4-x86_64
-CentOS-6.4-86
-centos-6.9-x86_64
+-2019.03.21 v1.1.5 <br>
+1.重写安装代码，优化安装过程。<br>
+2.测试了以下系统都能正常使用：<br>
+CentOS-7.0-x86_64<br>
+CentOS-7.3-x86_64<br>
+centos-7.4-x86_64<br>
+centos-7.5-x86_64<br>
+centos-7.6-x86_64<br><br>
+CentOS-6.4-x86_64<br>
+CentOS-6.4-86<br>
+centos-6.9-x86_64<br>
 
 ## 写在最后 ##
 如果发现版本bug，请及时发E-mail：wyx176@gmail.com，本人会尽快修复!<br>
