@@ -74,6 +74,10 @@ echo ""
 echo "安装Socks5所依赖的组件,请稍等..."
 yum -y install gcc gcc-c++ automake make pam-devel openldap-devel cyrus-sasl-devel openssl-devel
 yum update -y nss curl libcurl 
+
+#配置环境变量
+sed -i '$a export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin' ~/.bash_profile
+source ~/.bash_profile
 }
 
 #2.下载Socks5服务
