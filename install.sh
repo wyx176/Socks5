@@ -123,6 +123,15 @@ echo -e $uname $upasswd >> /etc/opt/ss5/ss5.passwd
 sed -i '87c auth    0.0.0.0/0               -               u' $confFile
 sed -i '203c permit u	0.0.0.0/0	-	0.0.0.0/0	-	-	-	-	-' $confFile
 
+
+#添加开机启动
+chmod +x /etc/init.d/ss5
+chkconfig --add ss5
+chkconfig --level 345 ss5 on
+confFile=/etc/rc.d/init.d/ss5
+sed -i '/echo -n "Starting ss5... "/a mkdir /var/run/ss5/' $confFile
+sed -i '54c rm -rf /var/run/ss5/' $confFile
+
 #判断ss5文件夹是否存在、
 if [ ! -d "/var/run/ss5/" ];then
 mkdir /var/run/ss5/
@@ -130,11 +139,6 @@ echo "create ss5 success!"
 else
 echo "/ss5/ is OK!"
 fi
-
-#添加开机启动
-chmod +x /etc/init.d/ss5
-chkconfig --add ss5
-chkconfig --level 345 ss5 on
 }
 
 #5.检测是否安装完整
