@@ -120,6 +120,7 @@ chkconfig --level 345 ss5 on
 confFile=/etc/rc.d/init.d/ss5
 sed -i '/echo -n "Starting ss5... "/a mkdir /var/run/ss5/' $confFile
 sed -i '54c rm -rf /var/run/ss5/' $confFile
+sed -i '18c [[ ${NETWORKING} = "no" ]] && exit 0' $confFile
 
 #判断ss5文件夹是否存在、
 if [ ! -d "/var/run/ss5/" ];then
