@@ -6,7 +6,7 @@ versionFile=/etc/opt/ss5/version.txt
 checkup(){
 newVersion=`curl -s -L  https://raw.githubusercontent.com/${resName}/Socks5/master/version.txt`
 oldVersion=`cat $versionFile`
-if [ $newVersion = $oldVersion ] ;then
+if [ $newVersion =~ $oldVersion ] ;then
 echo "V"$oldVersion
 else
 echo "有新版本V"$newVersion
