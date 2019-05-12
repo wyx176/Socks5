@@ -55,19 +55,7 @@ fi
 
 #1.清理旧环境和配置新环境
 Clear(){
-service ss5 stop
-rm -rf /run/ss5
-rm -f 	/run/lock/subsys/ss5
-rm -rf /etc/opt/ss5
-rm -f /usr/local/bin/s5
-rm -rf 	/usr/lib/ss5
-rm -f /usr/sbin/ss5
-rm -rf /usr/share/doc/ss5
-rm -rf /root/ss5-3.8.9
-rm -f /etc/sysconfig/ss5
-rm -f /etc/rc.d/init.d/ss5
-rm -f /etc/pam.d/ss5
-rm -rf /var/log/ss5
+unInstall
 clear
 echo "旧环境清理完毕！"
 echo ""
@@ -118,6 +106,7 @@ chmod +x /usr/local/bin/s5
 #设置默认用户名、默认开启帐号验证
 uname="123456"
 upasswd="654321"
+port="5555"
 confFile=/etc/opt/ss5/ss5.conf
 echo -e $uname $upasswd >> /etc/opt/ss5/ss5.passwd
 sed -i '87c auth    0.0.0.0/0               -               u' $confFile
@@ -146,34 +135,75 @@ check(){
 cd /root
 rm -rf /root/Socks5
 rm -rf /root/install.sh
-if [ ! -f "/usr/local/bin/s5" ] || [ ! -f "/etc/opt/ss5/service.sh" ]; then
+errorMsg=""
+isError=false
+if [ ! -f "/usr/local/bin/s5" ] ; then
+		errorMsg=${errorMsg}"001|"
+		isError=true
+		
+fi
+if  [ ! -f "/etc/opt/ss5/service.sh" ]; then
+	errorMsg=${errorMsg}"002|" 
+	isError=true
+	
+fi
+if  [ ! -f "/etc/opt/ss5/user.sh" ]; then
+	errorMsg=${errorMsg}"003|"
+	isError=true	
+fi
+
+if  [ ! -f "/etc/opt/ss5/ss5.conf" ]; then
+	errorMsg=${errorMsg}"004|"
+	isError=true	
+fi
+
+if [ "$isError" = "true" ] ; then
+unInstall
+clear
   echo ""
   echo "缺失文件，安装失败！！！"
+  echo "错误提示："${errorMsg}
   echo "发送邮件反馈bug ：wyx176@gmail.com"
   echo "或者添加Telegram群反馈"
   echo "Telegram群：t.me/Socks55555"
   exit 0
-
 else
 clear
 echo ""
+#service ss5 start
+systemctl daemon-reload
 service ss5 start
 echo ""
-echo "Socks5安装成功！"
+echo "Socks5安装完毕！"
 echo ""
 echo "输入"s5"启动Socks5控制面板"
 echo ""
-echo "Socks5服务可能不会随系统开机启动"
-echo ""
-echo "默认用户名: 123456"
-echo "默认密码  : 654321"
-echo "默认端口  : 5555"
+echo "默认用户名: "${uname}
+echo "默认密码  : "${upasswd}
+echo "默认端口  : "${port}
 echo ""
 echo "添加Telegram群组@Socks55555及时获取更新"
 echo ""
+exit 0
 fi
 }
 
+#6.卸载
+unInstall(){
+service ss5 stop
+rm -rf /run/ss5
+rm -f 	/run/lock/subsys/ss5
+rm -rf /etc/opt/ss5
+rm -f /usr/local/bin/s5
+rm -rf 	/usr/lib/ss5
+rm -f /usr/sbin/ss5
+rm -rf /usr/share/doc/ss5
+rm -rf /root/ss5-3.8.9
+rm -f /etc/sysconfig/ss5
+rm -f /etc/rc.d/init.d/ss5
+rm -f /etc/pam.d/ss5
+rm -rf /var/log/ss5
+}
 
 Clear
 Download
