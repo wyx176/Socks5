@@ -99,6 +99,7 @@ InstallPanel()
 #cd  /root/Socks5
 mv /root/Socks5/service.sh /etc/opt/ss5/
 mv /root/Socks5/user.sh /etc/opt/ss5/
+mv /root/Socks5/version.txt /etc/opt/ss5/
 mv /root/Socks5/ss5 /etc/sysconfig/
 mv /root/Socks5/s5 /usr/local/bin/
 chmod +x /usr/local/bin/s5
