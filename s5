@@ -1,6 +1,19 @@
 #!/bin/bash
 export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+resName="wyx176"
+versionFile=/etc/opt/ss5/version.txt
+
+checkup(){
+newVersion=`curl -s -L  https://raw.githubusercontent.com/${resName}/Socks5/master/version.txt`
+oldVersion=`cat $versionFile`
+if [ $newVersion = $oldVersion ] ;then
+echo "V"$oldVersion
+else
+echo "有新版本V"$newVersion
+fi
+}
 clear
+echo -e "欢迎使用SOCKS5 \033[32m$(checkup)\033[0m\n"
 echo "1.服务控制"
 echo "2.用户管理"
 echo "0.退出面板"
