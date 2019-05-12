@@ -4,21 +4,27 @@ userfile=/etc/opt/ss5/user.sh
 passwdFile=/etc/opt/ss5/ss5.passwd
 confFile=/etc/opt/ss5/ss5.conf
 portFile=/etc/sysconfig/ss5
+
 echo ""
 echo "*******************************"
-if [ ! -f "unss5.conf" ];then
-echo "@默认开启账户验证！@"
-#echo "*当前模式帐号验证失效 *"
-else
-echo "@默认开启账户验证！@"
-#echo "*当前模式需要帐号密码连接 *"
+cat $confFile | while read line
+do
+if  [[ $line =~ "permit u	0.0.0.0/0	-	0.0.0.0/0	-	-	-	-	-" ]] ;then
+echo  "@帐号验证：已开启@"
+break
 fi
+
+if  [[ $line =~ "permit -	0.0.0.0/0	-	0.0.0.0/0	-	-	-	-	-" ]] ;then
+echo "@帐号验证：已关闭@"
+break
+fi
+done
 echo "*******************************"
 echo "1.查看用户"
 echo "2.添加用户"
 echo "3.删除用户"
-echo "4.开启账户验证"
-echo "5.关闭账户验证"
+echo "4.开启账号验证"
+echo "5.关闭账号验证"
 echo "6.修改端口"
 echo "0.返回"
 while :; do echo
@@ -69,9 +75,13 @@ if [[ $choice == 4 ]];then
 clear
 sed -i '87c auth    0.0.0.0/0               -               u' $confFile
 sed -i '203c permit u	0.0.0.0/0	-	0.0.0.0/0	-	-	-	-	-' $confFile
-service ss5 restart
 echo ""
-echo "开启账户验证成功"
+var=`service ss5 restart`
+if [[ $var =~ "OK" ]] ;then
+ echo "开启账户验证成功"
+ else
+ echo "设置失败,请重试"
+ fi
 bash $userfile
 fi
 
@@ -79,9 +89,13 @@ if [[ $choice == 5 ]];then
 clear
 sed -i '87c auth    0.0.0.0/0               -               -' $confFile
 sed -i '203c permit -	0.0.0.0/0	-	0.0.0.0/0	-	-	-	-	-' $confFile
-service ss5 restart
 echo ""
-echo "账户验证关闭成功！"
+var=`service ss5 restart`
+if [[ $var =~ "OK" ]] ;then
+ echo "账户验证关闭成功！"
+ else
+ echo "设置失败,请重试"
+ fi
 bash $userfile
 fi
 
@@ -90,8 +104,12 @@ clear
 read -p "请输入新端口：" port
 sed -i '2c SS5_OPTS="-u root -b 0.0.0.0:' $portFile
 sed -i "/0.0.0:/ s/$/$port\"/" $portFile
-service ss5 restart
 echo ""
-echo "端口修改成功"
+var=`service ss5 restart`
+if [[ $var =~ "OK" ]] ;then
+ echo "端口修改成功"
+ else
+ echo "设置失败,请重试"
+ fi
 bash $userfile
 fi
