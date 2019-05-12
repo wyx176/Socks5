@@ -1,16 +1,20 @@
 #!/bin/bash
 #Set PATH
+
+resName="wyx176"
 serviceFile=/etc/opt/ss5/service.sh
+
 echo ""
 echo "1.启动"
 echo "2.停止"
 echo "3.重启"
 echo "4.状态"
-echo "5.卸载"
+echo "5.更新"
+echo "6.卸载"
 echo "0.返回"
 while :; do echo
 	read -p "请选择： " choice
-	if [[ ! $choice =~ ^[0-5]$ ]]; then
+	if [[ ! $choice =~ ^[0-6]$ ]]; then
 		echo "输入错误! 请输入正确的数字!"
 	else
 		break	
@@ -49,7 +53,23 @@ if [[ $choice == 4 ]];then
 	bash $serviceFile
 fi
 
+
 if [[ $choice == 5 ]];then
+	clear
+	echo "更新到最新版本将丢失所有数据,请提前备份！"
+	read -p "输入123开始更新,其它则取消： " c
+	if [[ "$c" == "123" ]];then
+	wget -q -N --no-check-certificate https://raw.githubusercontent.com/${resName}/Socks5/master/install.sh && bash install.sh
+	exit 0
+	else
+		clear
+		bash $serviceFile
+	fi
+fi
+
+
+
+if [[ $choice == 6 ]];then
 	clear
 	echo "你在做什么？你真的这么狠心吗？"
 	read -p "输入886开始卸载,其它则取消： " c
