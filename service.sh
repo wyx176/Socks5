@@ -3,6 +3,7 @@
 
 resName="wyx176"
 serviceFile=/etc/opt/ss5/service.sh
+newVersionMsg=`curl -s -L  https://raw.githubusercontent.com/${resName}/Socks5/master/update.txt`
 
 echo ""
 echo "1.启动"
@@ -57,6 +58,10 @@ fi
 if [[ $choice == 5 ]];then
 	clear
 	echo "更新到最新版本将丢失所有数据,请提前备份！"
+	echo " "
+	echo "最新版本："
+	echo ${newVersionMsg}
+	echo " "
 	read -p "输入123开始更新,其它则取消： " c
 	if [[ "$c" == "123" ]];then
 	wget -q -N --no-check-certificate https://raw.githubusercontent.com/${resName}/Socks5/master/install.sh && bash install.sh
