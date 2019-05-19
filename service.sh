@@ -60,7 +60,7 @@ if [[ $choice == 5 ]];then
 	echo "更新到最新版本将丢失所有数据,请提前备份！"
 	echo " "
 	echo "最新版本："
-	echo ${newVersionMsg}
+	echo -e ${newVersionMsg}
 	echo " "
 	read -p "输入123开始更新,其它则取消： " c
 	if [[ "$c" == "123" ]];then
