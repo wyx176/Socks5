@@ -33,7 +33,7 @@
  重启命令:service ss5 restart<br>
  
 ## 更新日志 ##
-
+[查看更新记录](https://github.com/wyx176/Socks5/blob/master/log.md)
 
 ## 写在最后 ##
 如果发现版本bug，请及时发E-mail：wyx176@gmail.com，本人会尽快修复!<br>
