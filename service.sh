@@ -42,11 +42,11 @@ echo "3.重启"
 echo "4.状态"
 echo "5.更新"
 echo "6.卸载"
-echo "7.iptables规则"
+echo "7.清理iptables规则"
 echo "0.返回"
 while :; do echo
 	read -p "请选择： " choice
-	if [[ ! $choice =~ ^[0-6]$ ]]; then
+	if [[ ! $choice =~ ^[0-7]$ ]]; then
 		echo "输入错误! 请输入正确的数字!"
 	else
 		break	
@@ -145,8 +145,8 @@ if [[ $choice == 7 ]];then
 	clear
 	echo "更换端口会产生新的iptables规则,不需要可手动删除,影响不大"
 	echo 
-	read -p "输入886开始开始清理,其它则取消： " c
-	if [[ "$c" == "886" ]];then
+	read -p "输入123开始开始清理,其它则取消： " c
+	if [[ "$c" == "123" ]];then
 	bash $unIptablesFile
 		if [[ $CentOS_RHEL_version == 7 ]];then
 	Iptab=`service iptables save`
