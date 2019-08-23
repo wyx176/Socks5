@@ -1,5 +1,5 @@
 #!/bin/bash
-export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 resName="wyx176"
 versionFile=/etc/opt/ss5/version.txt
 

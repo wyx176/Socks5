@@ -1,5 +1,6 @@
 #!/bin/sh
-export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
 #Check OS
 if [ -n "$(grep 'Aliyun Linux release' /etc/issue)" -o -e /etc/redhat-release ];then
     OS=CentOS
@@ -35,6 +36,8 @@ if [[ ${OS} == Ubuntu ]];then
 	echo "*请使用CentOS搭建     *"
 	echo "**********************"
 	exit 0
+	apt-get install git unzip wget -y
+	
 fi
 if [[ ${OS} == CentOS ]];then
 	
@@ -46,7 +49,7 @@ if [[ ${OS} == Debian ]];then
 	echo "*目前不支持Debian系统！*"
 	echo "*请使用CentOS搭建     *"
 	echo "**********************"
-	exit 0
+	apt-get install git unzip wget -y
     
 fi
 
@@ -67,30 +70,8 @@ source ~/.bash_profile
 #关闭防火墙
 newVersion=`cat /etc/redhat-release|sed -r 's/.* ([0-9]+)\..*/\1/'`
 if [[ ${newVersion} = "7" ]] ; then
-	 systemctl stop firewalld.service
-    yum install iptables-services -y
-    sshport=$(netstat -nlp | grep sshd | awk '{print $4}' | awk -F : '{print $NF}' | sort -n | uniq)
-    cat << EOF > /etc/sysconfig/iptables
-# sample configuration for iptables service
-# you can edit this manually or use system-config-firewall
-# please do not ask us to add additional ports/services to this default configuration
-*filter
-:INPUT ACCEPT [0:0]
-:FORWARD ACCEPT [0:0]
-:OUTPUT ACCEPT [0:0]
--A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
--A INPUT -p icmp -j ACCEPT
--A INPUT -i lo -j ACCEPT
--A INPUT -p tcp -m state --state NEW -m tcp --dport ${sshport} -j ACCEPT
--A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
--A INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT
--A INPUT -j REJECT --reject-with icmp-host-prohibited
--A FORWARD -j REJECT --reject-with icmp-host-prohibited
-COMMIT
-EOF
-    systemctl restart iptables.service
-    systemctl enable iptables.service
-    systemctl disable firewalld.service
+ systemctl stop firewalld
+ systemctl disable firewalld
  
  elif [[ ${newVersion} = "6" ]] ;then 
  service iptables stop
@@ -108,6 +89,7 @@ echo "下载Socks5服务中..."
 cd  /root
 git clone https://github.com/wyx176/Socks5
 }
+
 
 #3.安装Socks5服务程序
 InstallSock5()
@@ -130,7 +112,6 @@ InstallPanel()
 #cd  /root/Socks5
 mv /root/Socks5/service.sh /etc/opt/ss5/
 mv /root/Socks5/user.sh /etc/opt/ss5/
-mv /root/Socks5/rules.sh /etc/opt/ss5/
 mv /root/Socks5/version.txt /etc/opt/ss5/
 mv /root/Socks5/ss5 /etc/sysconfig/
 mv /root/Socks5/s5 /usr/local/bin/
@@ -140,22 +121,11 @@ chmod +x /usr/local/bin/s5
 uname="123456"
 upasswd="654321"
 port="5555"
-Iptab=""
 confFile=/etc/opt/ss5/ss5.conf
 echo -e $uname $upasswd >> /etc/opt/ss5/ss5.passwd
 sed -i '87c auth    0.0.0.0/0               -               u' $confFile
 sed -i '203c permit u	0.0.0.0/0	-	0.0.0.0/0	-	-	-	-	-' $confFile
 
-iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport $port -j ACCEPT
-echo "iptables -D INPUT -m state --state NEW -m tcp -p tcp --dport $port -j ACCEPT" > /etc/opt/ss5/unIptables.sh
-
-if [[ $CentOS_RHEL_version == 7 ]];then
-Iptab=`service iptables save`
-	systemctl restart iptables.service
-else
-Iptab=`/etc/init.d/iptables save`
-	/etc/init.d/iptables restart
-fi
 
 #添加开机启动
 chmod +x /etc/init.d/ss5
@@ -165,7 +135,6 @@ confFile=/etc/rc.d/init.d/ss5
 sed -i '/echo -n "Starting ss5... "/a if [ ! -d "/var/run/ss5/" ];then mkdir /var/run/ss5/; fi' $confFile
 sed -i '54c rm -rf /var/run/ss5/' $confFile
 sed -i '18c [[ ${NETWORKING} = "no" ]] && exit 0' $confFile
-sed -i '7c bash /etc/opt/ss5/rules.sh' $confFile
 
 #判断ss5文件夹是否存在、
 if [ ! -d "/var/run/ss5/" ];then
