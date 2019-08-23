@@ -109,6 +109,15 @@ if [[ $choice == 6 ]];then
 	echo "你在做什么？你真的这么狠心吗？"
 	read -p "输入886开始卸载,其它则取消： " c
 	if [[ "$c" == "886" ]];then
+	bash $unIptablesFile
+	if [[ $CentOS_RHEL_version == 7 ]];then
+	Iptab=`service iptables save`
+		systemctl restart iptables.service
+	else
+	Iptab=`/etc/init.d/iptables save`
+		/etc/init.d/iptables restart
+	fi
+	
 	service ss5 stop
 	rm -rf /run/ss5
  rm -f 	/run/lock/subsys/ss5
@@ -122,14 +131,7 @@ rm -f /etc/sysconfig/ss5
 rm -f /etc/rc.d/init.d/ss5
 rm -f /etc/pam.d/ss5
 rm -rf /var/log/ss5
-bash $unIptablesFile
-	if [[ $CentOS_RHEL_version == 7 ]];then
-	Iptab=`service iptables save`
-		systemctl restart iptables.service
-	else
-	Iptab=`/etc/init.d/iptables save`
-		/etc/init.d/iptables restart
-	fi
+
 	clear
 	echo "Socks5服务卸载完毕！"
 	exit 0
