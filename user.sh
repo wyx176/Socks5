@@ -37,14 +37,13 @@ unIptablesFile=/etc/opt/ss5/unIptables.sh
 
 Tcp_On(){
 	Iptab=""
+	if [[ $CentOS_RHEL_version == 7 ]];then
 	iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport $port -j ACCEPT
 	echo "iptables -D INPUT -m state --state NEW -m tcp -p tcp --dport $port -j ACCEPT" >> $unIptablesFile
-	if [[ $CentOS_RHEL_version == 7 ]];then
 	Iptab=`service iptables save`
 		systemctl restart iptables.service
 	else
-	Iptab=`/etc/init.d/iptables save`
-		/etc/init.d/iptables restart
+		Iptab ="OK" 
 	fi
 	
 	if [[ $Iptab =~ "OK" ]] ;then
@@ -162,5 +161,7 @@ if [[ $var =~ "OK" ]] && [[ $isIptab =~ "OK" ]]  ;then
 	echo "设置失败,请重试"
  fi
 	bash $userfile
+	
+	
 fi
 

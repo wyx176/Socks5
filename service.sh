@@ -42,8 +42,10 @@ echo "3.重启"
 echo "4.状态"
 echo "5.更新"
 echo "6.卸载"
+if [[ $CentOS_RHEL_version == 7 ]];then
 echo "7.查看iptables规则"
 echo "8.清理iptables规则"
+fi
 echo "0.返回"
 while :; do echo
 	read -p "请选择： " choice

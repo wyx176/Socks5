@@ -34,7 +34,7 @@ iptables_on(){
 	if [[ $CentOS_RHEL_version == 7 ]];then
 		systemctl restart iptables.service
 	else
-		/etc/init.d/iptables restart
+		
 	fi
 }
 
