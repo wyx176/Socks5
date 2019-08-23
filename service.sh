@@ -42,6 +42,7 @@ echo "3.重启"
 echo "4.状态"
 echo "5.更新"
 echo "6.卸载"
+echo "7.iptables规则"
 echo "0.返回"
 while :; do echo
 	read -p "请选择： " choice
@@ -138,4 +139,29 @@ rm -rf /var/log/ss5
 	else
 		bash $serviceFile
 	fi
+fi
+
+if [[ $choice == 7 ]];then
+	clear
+	echo "更换端口会产生新的iptables规则,不需要可手动删除,影响不大"
+	echo 
+	read -p "输入886开始开始清理,其它则取消： " c
+	if [[ "$c" == "886" ]];then
+	bash $unIptablesFile
+		if [[ $CentOS_RHEL_version == 7 ]];then
+	Iptab=`service iptables save`
+		systemctl restart iptables.service
+	else
+	Iptab=`/etc/init.d/iptables save`
+		/etc/init.d/iptables restart
+	fi
+	
+	if [[ $Iptab =~ "OK" ]] ;then
+		echo "清理成功,如果S5无网络,请重新修改端口！"
+	 else
+		echo "清理失败,请稍候重试！"
+	 fi
+	fi
+	service ss5 status
+	bash $serviceFile
 fi
