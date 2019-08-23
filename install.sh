@@ -127,6 +127,8 @@ sed -i '87c auth    0.0.0.0/0               -               u' $confFile
 sed -i '203c permit u	0.0.0.0/0	-	0.0.0.0/0	-	-	-	-	-' $confFile
 
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport $port -j ACCEPT
+echo "iptables -D INPUT -m state --state NEW -m tcp -p tcp --dport $port -j ACCEPT" > /etc/opt/ss5/unIptables.sh
+
 if [[ $CentOS_RHEL_version == 7 ]];then
 Iptab=`service iptables save`
 	systemctl restart iptables.service

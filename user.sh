@@ -33,10 +33,12 @@ userfile=/etc/opt/ss5/user.sh
 passwdFile=/etc/opt/ss5/ss5.passwd
 confFile=/etc/opt/ss5/ss5.conf
 portFile=/etc/sysconfig/ss5
+unIptablesFile=/etc/opt/ss5/unIptables.sh
 
 Tcp_On(){
 	Iptab=""
 	iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport $port -j ACCEPT
+	echo "iptables -D INPUT -m state --state NEW -m tcp -p tcp --dport $port -j ACCEPT" > unIptablesFile
 	if [[ $CentOS_RHEL_version == 7 ]];then
 	Iptab=`service iptables save`
 		systemctl restart iptables.service
