@@ -42,11 +42,12 @@ echo "3.重启"
 echo "4.状态"
 echo "5.更新"
 echo "6.卸载"
-echo "7.清理iptables规则"
+echo "7.查看iptables规则"
+echo "8.清理iptables规则"
 echo "0.返回"
 while :; do echo
 	read -p "请选择： " choice
-	if [[ ! $choice =~ ^[0-7]$ ]]; then
+	if [[ ! $choice =~ ^[0-8]$ ]]; then
 		echo "输入错误! 请输入正确的数字!"
 	else
 		break	
@@ -142,6 +143,12 @@ rm -rf /var/log/ss5
 fi
 
 if [[ $choice == 7 ]];then
+	clear
+	cat /etc/sysconfig/iptables
+	bash $serviceFile
+fi
+
+if [[ $choice == 8 ]];then
 	clear
 	echo "更换端口会产生新的iptables规则,不需要可手动删除,影响不大"
 	echo 
