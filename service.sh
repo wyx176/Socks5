@@ -157,11 +157,11 @@ if [[ $choice == 7 ]];then
 	fi
 	
 	if [[ $Iptab =~ "OK" ]] ;then
+		echo "" > $unIptablesFile
 		echo "清理成功,如果S5无网络,请重新修改端口！"
 	 else
 		echo "清理失败,请稍候重试！"
 	 fi
 	fi
-	service ss5 status
 	bash $serviceFile
 fi
