@@ -1,3 +1,7 @@
+# 该脚本已失效，请移至新脚本[nps-socks5](https://github.com/wyx176/nps-socks5)
+# 该脚本已失效，请移至新脚本[nps-socks5](https://github.com/wyx176/nps-socks5)
+# 该脚本已失效，请移至新脚本[nps-socks5](https://github.com/wyx176/nps-socks5)
+# 该脚本已失效，请移至新脚本[nps-socks5](https://github.com/wyx176/nps-socks5)
 # Socks5服务一键搭建脚本
 - [x] 稳定版V1.1.8
 
@@ -20,7 +24,7 @@
 - 输入 s5 即可启动控制面板
 
 ## 一键安装或更新到最新 ##
- <pre><code>wget -q -N --no-check-certificate https://raw.githubusercontent.com/wyx176/Socks5/master/install.sh && bash install.sh</code></pre>
+ <pre><code>wget -q -N --no-check-certificate https://xxraw.githubusercontent.com/wyx176/Socks5/master/install.sh && bash install.sh</code></pre>
 
 ## 相关文件路径 ##
 - 1.端口文件<br>
