@@ -87,7 +87,7 @@ Download()
 echo ""
 echo "下载Socks5服务中..."
 cd  /root
-git clone https://github.com/wyx176/Socks5
+git clone https://github.com/longdan007/Socks5
 }
 
 
@@ -118,9 +118,9 @@ mv /root/Socks5/s5 /usr/local/bin/
 chmod +x /usr/local/bin/s5
 
 #设置默认用户名、默认开启帐号验证
-uname="123456"
-upasswd="654321"
-port="5555"
+uname="qwer"
+upasswd="1234"
+port="65530"
 confFile=/etc/opt/ss5/ss5.conf
 echo -e $uname $upasswd >> /etc/opt/ss5/ss5.passwd
 sed -i '87c auth    0.0.0.0/0               -               u' $confFile
